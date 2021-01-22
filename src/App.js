@@ -9,6 +9,7 @@ import Header from "./components/header/header.component.jsx";
 import CheckoutPage from "./components/checkout/checkout.component";
 import SignInAndSignUpPage from "./components/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx";
 
+
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 import "./App.css";
@@ -33,7 +34,7 @@ class App extends React.Component {
           });
         });
       } else {
-        setCurrentUser(userAuth);
+        setCurrentUser(userAuth);       
       }
     });
   }
@@ -66,6 +67,7 @@ class App extends React.Component {
     );
   }
 }
+
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
