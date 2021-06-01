@@ -1,7 +1,7 @@
-import React from "react";
+import React , { useEffect }from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
-import { createStructuredSelector } from "reselect";
+//import { createStructuredSelector } from "reselect";
 
 import CollectionsOverviewContainer from "../../components/collections-overview/collections-overview.container";
 import CollectionPageContainer from "../collection/collection.container";
@@ -23,7 +23,7 @@ import { fetchCollectionsStartAsync } from "../../redux/shop/shop.actions";
 //   </div>
 // );
 
-class ShopPage extends React.Component {
+const ShopPage = ({ fetchCollectionsStartAsync , match}) => {
   //moved everything to shop.actions with redux thunk.
   // state = {
   //   loading: true,
@@ -31,10 +31,12 @@ class ShopPage extends React.Component {
 
   // unsubscribeFromSnapshot = null;
 
-  componentDidMount() {
-      const { fetchCollectionsStartAsync } = this.props;
-     fetchCollectionsStartAsync();
-
+  // componentDidMount() {
+  //     const { fetchCollectionsStartAsync } = this.props;
+  //    fetchCollectionsStartAsync();
+ useEffect(() => {
+   fetchCollectionsStartAsync();
+ }, [fetchCollectionsStartAsync])
 
 
     // const { updateCollections } = this.props;
@@ -55,10 +57,10 @@ class ShopPage extends React.Component {
     //   updateCollections(collectionsMap);
     //   this.setState({ loading: false})
     // });
-  }
+  //}
 
-  render() {
-    const { match } = this.props;
+  //render() {
+    //const { match } = this.props;
     //const { loading } = this.state;
     return (
       <div className="shop-page">
@@ -73,7 +75,7 @@ class ShopPage extends React.Component {
         />
       </div>
     );
-  }
+  //}
 }
 
 // const mapStateToProps = createStructuredSelector({
